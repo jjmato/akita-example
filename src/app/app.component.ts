@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductQuery, Product, ProductService } from './product/state';
+import { ProductQuery, ProductService, Product } from './product/state';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,8 @@ import { ProductQuery, Product, ProductService } from './product/state';
 })
 export class AppComponent implements OnInit {
   title = 'akita-example';
-  bussy: boolean;
-  products: Array<Product>;
+  loading$: Observable<boolean>;
+  products$: Observable<Product[]>;
 
   constructor(
     private _productQuery: ProductQuery,
@@ -18,11 +19,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this._productService.add();
-    this._productQuery
-      .selectLoading()
-      .subscribe(loading => (this.bussy = loading));
-    this._productQuery
-      .selectAll()
-      .subscribe(products => (this.products = products));
+    this.loading$ = this._productQuery.selectLoading();
+    this.products$ = this._productQuery.selectAll();
   }
 }

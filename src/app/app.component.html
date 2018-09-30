@@ -1,9 +1,13 @@
-<div>
-  <p *ngIf="bussy"> loading cools stuffs ... </p>
+<h1 class="title is-1"> {{ title }} </h1>
+<div *ngIf="loading$ | async ">
+  <span class="icon">
+    <i class="fas fa-spinner fa-pulse"></i>
+  </span>
+  <p> loading cools stuffs ... </p>
 </div>
 <div>
-  <h1> products ... maybe ... </h1>
-  <div *ngFor="let p of products">
+  <h2 class="title is-2"> products ... maybe ... </h2>
+  <div *ngFor="let p of products$ | async">
     <pre>
       {{ p | json : 2 }}
     </pre>
