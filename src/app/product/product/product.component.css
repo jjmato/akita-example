@@ -1,0 +1,9 @@
+:host {
+  border: solid salmon 1px;
+  display: flex;
+  flex-flow: row;
+}
+
+div {
+  min-width: 150px;
+}

@@ -7,9 +7,5 @@
 </div>
 <div>
   <h2 class="title is-2"> products ... maybe ... </h2>
-  <div *ngFor="let p of products$ | async">
-    <pre>
-      {{ p | json : 2 }}
-    </pre>
-  </div>
+  <app-product *ngFor="let p of products$ | async" [product]="p"></app-product>
 </div>
