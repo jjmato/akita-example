@@ -1,3 +1,5 @@
+import { Cart } from './cart/state/cart.model';
+import { CartQuery } from './cart/state/cart.query';
 import { Component, OnInit } from '@angular/core';
 import { ProductQuery, ProductService, Product } from './product/state';
 import { Observable } from 'rxjs';
@@ -11,15 +13,18 @@ export class AppComponent implements OnInit {
   title = 'akita-example';
   loading$: Observable<boolean>;
   products$: Observable<Product[]>;
+  cart$: Observable<Cart[]>;
 
   constructor(
     private _productQuery: ProductQuery,
-    private _productService: ProductService
+    private _productService: ProductService,
+    private _cartQuery: CartQuery
   ) {}
 
   ngOnInit(): void {
     this._productService.add();
     this.loading$ = this._productQuery.selectLoading();
     this.products$ = this._productQuery.selectAll();
+    this.cart$ = this._cartQuery.selectAll();
   }
 }

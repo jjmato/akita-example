@@ -1,25 +1,19 @@
-import { Injectable } from '@angular/core';
-import { ID } from '@datorama/akita';
-import { CartStore } from './cart.store';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Product } from './../../product/state/product.model';
+import { CartStore } from './cart.store';
 
 @Injectable({ providedIn: 'root' })
 export class CartService {
-
-  constructor(private cartStore: CartStore,
-              private http: HttpClient) {
-  }
+  constructor(private cartStore: CartStore, private http: HttpClient) {}
 
   get() {
     // this.http.get().subscribe((entities: ServerResponse) => {
-      // this.cartStore.set(entities);
+    // this.cartStore.set(entities);
     // });
   }
 
-  add() {
-    // this.http.post().subscribe((entity: ServerResponse) => {
-      // this.cartStore.add(entity);
-    // });
+  add(product: Product) {
+    this.cartStore.add(product);
   }
-
 }

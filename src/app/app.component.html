@@ -5,6 +5,12 @@
   </span>
   <p> loading cools stuffs ... </p>
 </div>
+
+<div>
+  <h2 class="title is-2">Cart</h2>
+  {{ cart$ | async }}
+</div>
+
 <div>
   <h2 class="title is-2"> products ... maybe ... </h2>
   <app-product *ngFor="let p of products$ | async" [product]="p"></app-product>
