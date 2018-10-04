@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   loading$: Observable<boolean>;
   products$: Observable<Product[]>;
   cart$: Observable<Cart[]>;
+  cartLength: number;
 
   constructor(
     private _productQuery: ProductQuery,
@@ -26,5 +27,6 @@ export class AppComponent implements OnInit {
     this.loading$ = this._productQuery.selectLoading();
     this.products$ = this._productQuery.selectAll();
     this.cart$ = this._cartQuery.selectAll();
+    this.cart$.subscribe( cart => this.cartLength = cart.length);
   }
 }
