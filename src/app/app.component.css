@@ -2,3 +2,8 @@
   display: block;
   margin: 1rem;
 }
+
+.product-list{
+  display: flex;
+  flex-flow: row wrap;
+}
