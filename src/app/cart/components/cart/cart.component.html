@@ -1,0 +1,6 @@
+<div>
+  <h2 class="title is-2">Items in Cart {{ cartLength }}</h2>
+</div>
+<pre>
+  {{ cart$ | async | json: 2 }}
+</pre>

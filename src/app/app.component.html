@@ -1,17 +1,9 @@
-<h1 class="title is-1"> {{ title }} </h1>
-<div *ngIf="loading$ | async ">
-  <span class="icon">
-    <i class="fas fa-spinner fa-pulse"></i>
-  </span>
-  <p> loading cools stuffs ... </p>
-</div>
-
-<div>
-  <h2 class="title is-2">Items in Cart {{ cartLength }}</h2>
-</div>
-
-<ae-product-list></ae-product-list>
-
-<pre>
-  {{ cart$ | async | json:2 }}
-</pre>
+<h1 class="title is-1">{{ title }}</h1>
+<ng-container *ngIf="(loading$ | async); else: app">
+  <span class="icon"> <i class="fas fa-spinner fa-pulse"></i> </span>
+  <p>loading cools stuffs ...</p>
+</ng-container>
+<ng-template #app>
+  <ae-product-list></ae-product-list>
+  <ae-cart></ae-cart>
+</ng-template>
