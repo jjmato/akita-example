@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Product } from '../state';
-import { CartService } from '../../cart/state';
+import { Product } from '../../state';
+import { CartService } from './../../../cart/state/cart.service';
 
 @Component({
   selector: 'ae-product',

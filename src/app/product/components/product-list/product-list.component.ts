@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Product, ProductQuery } from '../state';
+import { Product, ProductQuery } from '../../state';
 
 @Component({
   selector: 'ae-product-list',
