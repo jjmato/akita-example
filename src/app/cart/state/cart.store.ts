@@ -11,9 +11,12 @@ export class CartStore extends EntityStore<CartState, CartItem> {
   constructor() {
     super();
   }
+
   updateQuantity(productId: Product['id']) {
     this.update(productId, entity => {
-      return { ...entity, quantity: entity.quantity + 1 };
+      const quantity = entity.quantity + 1;
+      const total = entity.price * quantity;
+      return { ...entity, quantity, total };
     });
   }
 }

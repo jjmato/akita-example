@@ -19,12 +19,14 @@ export class CartService {
     // });
   }
 
-  addProdcutToCart(productId: Product['id']) {
+  addProdcutToCart(product: Product) {
+    const productId = product.id;
+    const price = product.price;
     const findCartItem = this._cartQuery.getEntity(productId);
     if (findCartItem) {
       return this._cartStore.updateQuantity(productId);
     }
-    const cartItem = createCartItem({ productId });
+    const cartItem = createCartItem({ productId, price });
     return this._cartStore.add(cartItem);
   }
 }
