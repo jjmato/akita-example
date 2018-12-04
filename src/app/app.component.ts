@@ -6,14 +6,13 @@ import { Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-root',
+  selector: 'ae-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
   title = 'akita-example';
   loading$: Observable<boolean>;
-  products$: Observable<Product[]>;
   cart$: Observable<CartItem[]>;
   cartLength: number;
 
@@ -24,9 +23,7 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this._productService.add();
     this.loading$ = this._productQuery.selectLoading();
-    this.products$ = this._productQuery.selectAll();
     this.cart$ = this._cartQuery.selectAll();
     this.cart$
       .pipe(filter( cart => cart.length > 0 ))

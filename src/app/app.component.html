@@ -10,11 +10,7 @@
   <h2 class="title is-2">Items in Cart {{ cartLength }}</h2>
 </div>
 
-<h2 class="title is-2"> List Products </h2>
-<div class="product-list">
-  <app-product *ngFor="let p of products$ | async" [product]="p"></app-product>
-</div>
-
+<ae-product-list></ae-product-list>
 
 <pre>
   {{ cart$ | async | json:2 }}

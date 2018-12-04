@@ -3,7 +3,7 @@ import { Product } from '../state';
 import { CartService } from '../../cart/state';
 
 @Component({
-  selector: 'app-product',
+  selector: 'ae-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
