@@ -1,11 +1,15 @@
-import { ID } from '@datorama/akita';
+import { Product } from './../../product/state/product.model';
 
-export interface Cart {
-  id: ID;
+export interface CartItem {
+  productId: Product['id'];
+  quantity: number;
+  total: number;
 }
 
-export function createCart(params: Partial<Cart>) {
+export function createCartItem(params: Partial<CartItem>) {
   return {
-
-  } as Cart;
+    total: 0,
+    quantity: 1,
+    ...params
+  } as CartItem;
 }

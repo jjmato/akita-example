@@ -1,4 +1,4 @@
-import { Cart } from './cart/state/cart.model';
+import { CartItem } from './cart/state/cart.model';
 import { CartQuery } from './cart/state/cart.query';
 import { Component, OnInit } from '@angular/core';
 import { ProductQuery, ProductService, Product } from './product/state';
@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   title = 'akita-example';
   loading$: Observable<boolean>;
   products$: Observable<Product[]>;
-  cart$: Observable<Cart[]>;
+  cart$: Observable<CartItem[]>;
   cartLength: number;
 
   constructor(
