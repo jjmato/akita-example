@@ -3,6 +3,7 @@ import { CartQuery } from './cart/state/cart.query';
 import { Component, OnInit } from '@angular/core';
 import { ProductQuery, ProductService, Product } from './product/state';
 import { Observable } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -27,6 +28,13 @@ export class AppComponent implements OnInit {
     this.loading$ = this._productQuery.selectLoading();
     this.products$ = this._productQuery.selectAll();
     this.cart$ = this._cartQuery.selectAll();
-    this.cart$.subscribe( cart => this.cartLength = cart.length);
+    this.cart$
+      .pipe(filter( cart => cart.length > 0 ))
+      .subscribe(
+        cart =>
+          (this.cartLength = cart
+            .map(ci => ci.quantity)
+            .reduce((q0, q1) => q0 + q1))
+      );
   }
 }
